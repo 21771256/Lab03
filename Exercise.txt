@@ -1,0 +1,126 @@
+Ex1: redclaring variable using let or const results in an error
+    let a = 3
+    #undefined
+    a
+    #3
+    let a = 4
+    #Uncaught SyntaxError: redeclaration of let a
+        #<anonymous> debugger eval code:1
+
+    const b = 4.2
+    #undefined
+    b
+    #4.2
+    const b = 4.1
+    #Uncaught SyntaxError: redeclaration of const b
+        #<anonymous> debugger eval code:1
+
+
+
+Ex2: using reverse() concat() and join ('')
+    var ex2a = ['c','b','a']
+    #undefined
+    ex2a.reverse()
+    #Array(3) [ "a", "b", "c" ]
+    ex2a = ex2a.concat(var3)
+    #Array(6) [ "a", "b", "c", 1, 2, 3 ]
+    ex2a
+    #Array(6) [ "a", "b", "c", 1, 2, 3 ]
+    ex2string = ex2a.join('')
+    #"abc123"
+    ex2string
+    #"abc123" 
+
+
+
+Ex3: notice the `` is used instead of "" in returning string of introduce
+    const ex3 = {
+        name: '<Name>',
+        introduce: function() {
+            return `Hello, my name is ${this.name}`
+        }
+    }
+    #undefined
+    ex3.introduce()
+    #"Hello, my name is <Name>"
+
+
+
+Ex4: array.map()
+    Names = ['Alice', 'Bob', 'Cthulhu']
+    #Array(3) [ "Alice", "Bob", "Cthulhu" ]
+    greetings = names.map(x => 'Hello ' + x + '!')
+    #Array(3) [ "Hello Alice!", "Hello Bob!", "Hello Cthulhu!" ]
+​
+
+
+Ex5: array.reduce()
+    largestNo = myNumbers.reduce((largestNo,x) => Math.max(largestNo,x))
+    #7 
+
+
+
+Ex6: using arrow function and concat strings
+    displayArray = (inputArray) => {
+    // Create an array where each element contains <li>item</li>
+    let itemArray = inputArray.map(x => '<li>' + x + '<li>');
+    // Concatenate all the elements of list into one string
+    let oneString = itemArray.reduce((oneString,x)=>oneString + x);
+    document.getElementById('cool-section').innerHTML =
+    '<ul>' + oneString + '</ul>';
+    }
+    displayArray(greetings)
+
+
+
+Ex7: Lodash, find exact Batman using _.findIndex() and _.eq()
+    heroes = ['The Hulk', 'Wonder Woman', 'Batman'];
+    _.findIndex(heroes, x => _.eq(x, 'Batman') )
+    _.findIndex(heroes, x => x === 'Batman' )
+
+
+
+Ex8: ***"this.radius" instead of "this.rad"
+     ***eturn{} in createCircle function!
+     ***the , instead of ; after radius: rad, (for example)
+    //code
+    areaOfCircle = function(){
+	    return this.radius*this.radius*Math.PI;
+    };
+    perimeterOfCircle = function(){
+	    return 2*this.radius*Math.PI;
+    };
+    createCircle = function(rad){
+	    return{
+		    radius: rad,
+		    area: areaOfCircle,
+		    perimeter: perimeterOfCircle
+	    };
+    };
+
+    const circle = createCircle(4);
+    #undefined
+    circle
+    #{ radius: 4, area: areaOfCircle, perimeter: perimeterOfCircle }
+    circle.perimeter()
+    #25.132741228718345
+    circle.area()
+    #50.26548245743669
+
+
+
+Ex9: ***Map each number in radii array into the createCircle function.
+     ***Instead of using radii.map(createCircle(radii)) as
+     ***createCricle(radii) happens before mapping in the above wrong case
+    function createCircles(radii){
+        return radii.map(createCircle);
+    }
+    radii = [2,3,4,5];
+    createCircles(radii);
+    #Array(4) [ {…}, {…}, {…}, {…} ]
+    #0: Object { radius: 2, area: areaOfCircle(), perimeter: perimeterOfCircle() }
+    #1: Object { radius: 3, area: areaOfCircle(), perimeter: perimeterOfCircle() }
+    #2: Object { radius: 4, area: areaOfCircle(), perimeter: perimeterOfCircle() }
+    #3: Object { radius: 5, area: areaOfCircle(), perimeter: perimeterOfCircle() }
+    #length: 4
+    #<prototype>: Array []
