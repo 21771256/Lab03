@@ -124,3 +124,4 @@ Ex9: ***Map each number in radii array into the createCircle function.
     #3: Object { radius: 5, area: areaOfCircle(), perimeter: perimeterOfCircle() }
     #length: 4
     #<prototype>: Array []
+
